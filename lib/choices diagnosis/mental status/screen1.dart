@@ -53,6 +53,9 @@ class _SlumsTestScreen1State extends State<SlumsTestScreen1> {
                       itemCount: questions1.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
+                          // if(index!=3){
+                            
+                          // }
                           title: Text(
                             questions1[index].questionText,
                             textDirection: TextDirection.rtl,
