@@ -43,7 +43,7 @@ class _SlumsTestScreen4State extends State<SlumsTestScreen4> {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, AppStates state) {},
       builder: (BuildContext context, AppStates state) {
-        // AppCubit cubit = AppCubit.get(context);
+        AppCubit cubit = AppCubit.get(context);
         return Scaffold(
           appBar: appBar('الحالة العقلية'),
           body: Column(
@@ -62,13 +62,13 @@ class _SlumsTestScreen4State extends State<SlumsTestScreen4> {
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
                         title: Text(
-                          questions4[index].questionText,
+                          cubit.questions4[index].questionText,
                           textDirection: TextDirection.rtl,
                         ),
                         subtitle: TextField(
                           onChanged: (newValue) {
                             setState(() {
-                              questions4[index].answer = newValue;
+                              cubit.questions4[index].answer = newValue;
                             });
                           },
                           decoration: InputDecoration(
@@ -83,27 +83,35 @@ class _SlumsTestScreen4State extends State<SlumsTestScreen4> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Colors.deepPurple[50],
-                    child: Text(
-                      state_mental,
-                      style: TextStyle(
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
+                  // CircleAvatar(
+                  //   radius: 22,
+                  //   backgroundColor: Colors.deepPurple[50],
+                  //   child: Text(
+                  //     state_mental,
+                  //     style: TextStyle(
+                  //       color: Colors.deepPurple,
+                  //       fontWeight: FontWeight.bold,
+                  //       fontSize: 20.0,
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     width: 30,
                   ),
-                  StyleEvaluationButton('النتيجة', () {
-                    dynamic values = getAllResult(
-                        questions1, questions2, questions3, questions4);
-                    state_mental = sendAnswersToFastAPI(values);
-                    print(state_mental);
-                  })
+                  StyleEvaluationButton('النتيجة', () async {
+                    dynamic values = getAllResult(cubit.questions1,
+                        cubit.questions2, cubit.questions3, cubit.questions4);
+                    print(values);
+                    dynamic response = sendAnswersToFastAPI(values);
+                    cubit.changeResponseMentalBody(response);
+                    // cubit.state_mental = await sendAnswersToFastAPI(values);
+                    // print(cubit.state_mental);
+                  }),
+                  SizedBox(width: 10,),
+                  Text(
+                    cubit.state_mental,
+                    style: TextStyle(fontSize: 16, color: Colors.black,fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ],

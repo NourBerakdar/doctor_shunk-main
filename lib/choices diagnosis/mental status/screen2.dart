@@ -24,7 +24,7 @@ class _SlumsTestScreen2State extends State<SlumsTestScreen2> {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, AppStates state) {},
       builder: (BuildContext context, AppStates state) {
-        // AppCubit cubit = AppCubit.get(context);
+        AppCubit cubit = AppCubit.get(context);
         return Scaffold(
           appBar: appBar('الحالة العقلية'),
           body: Column(
@@ -33,17 +33,17 @@ class _SlumsTestScreen2State extends State<SlumsTestScreen2> {
                 child: Container(
                     decoration: backgroundDecoration(),
                     child: ListView.builder(
-                      itemCount: questions2.length,
+                      itemCount: cubit.questions2.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
                           title: Text(
-                            questions2[index].questionText,
+                            cubit.questions2[index].questionText,
                             textDirection: TextDirection.rtl,
                           ),
                           subtitle: TextField(
                             onChanged: (newValue) {
                               setState(() {
-                                questions2[index].answer = newValue;
+                                cubit.questions2[index].answer = newValue;
                               });
                             },
                             decoration: InputDecoration(

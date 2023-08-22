@@ -35,13 +35,13 @@ class SlumsTestScreen1 extends StatefulWidget {
 }
 
 class _SlumsTestScreen1State extends State<SlumsTestScreen1> {
-  String _arabicText = '';
+  // String _arabicText = '';
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, AppStates state) {},
       builder: (BuildContext context, AppStates state) {
-        // AppCubit cubit = AppCubit.get(context);
+        AppCubit cubit = AppCubit.get(context);
         return Scaffold(
           appBar: appBar('الحالة العقلية'),
           body: Column(
@@ -50,20 +50,20 @@ class _SlumsTestScreen1State extends State<SlumsTestScreen1> {
                 child: Container(
                     decoration: backgroundDecoration(),
                     child: ListView.builder(
-                      itemCount: questions1.length,
+                      itemCount: cubit.questions1.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
                           // if(index!=3){
                             
                           // }
                           title: Text(
-                            questions1[index].questionText,
+                            cubit.questions1[index].questionText,
                             textDirection: TextDirection.rtl,
                           ),
                           subtitle: TextField(
                             onChanged: (newValue) {
                               setState(() {
-                                questions1[index].answer = newValue;
+                               cubit.questions1[index].answer = newValue;
                               });
                             },
                             decoration: InputDecoration(
@@ -75,7 +75,7 @@ class _SlumsTestScreen1State extends State<SlumsTestScreen1> {
                     )),
               ),
               StyleEvaluationButton('التالي', () {
-                print(questions1[1].answer);
+                print(cubit.questions1[1].answer);
                 Navigator.push(
                     context,
                     MaterialPageRoute(

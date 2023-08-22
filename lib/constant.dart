@@ -161,4 +161,19 @@ ElevatedButton StyleEvaluationButton(String textButton, Function() onPressed) {
         backgroundColor: MaterialStateProperty.all(DarkColor),
         textStyle: MaterialStateProperty.all(TextStyle(fontSize: 20))),
   );
+
+
 }
+
+  Text resultText(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+      textDirection: TextDirection.rtl,
+      textAlign: TextAlign.center,
+    );
+  }

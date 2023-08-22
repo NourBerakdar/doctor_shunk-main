@@ -31,23 +31,38 @@ class Results extends StatelessWidget {
                           ),),
                           SizedBox(width: 20,),
                           Container(
-                            width: 200,
+                            width: 180,
                             height: 50,
                             decoration: BoxDecoration(
                               color: LightColor,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Center(
-                              child: Text(
-                                'الأسئلة السريرية',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                                textDirection: TextDirection.rtl,
-                                textAlign: TextAlign.center,
-                              ),
+                              child:resultText('الأسئلة السريرية'),
+                              
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    SizedBox(height: 50,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(cubit.changeMentalResponseBody(),style: TextStyle(
+                              fontSize: 20
+                          ),),
+                          SizedBox(width: 20,),
+                          Container(
+                            width: 160,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: LightColor,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Center(
+                              child:resultText('الحالة العقلية'),
+                              
                             ),
                           ),
 

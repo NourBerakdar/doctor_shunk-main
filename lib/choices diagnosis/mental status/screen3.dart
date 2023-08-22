@@ -23,7 +23,7 @@ class _SlumsTestScreen3State extends State<SlumsTestScreen3> {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, AppStates state) {},
       builder: (BuildContext context, AppStates state) {
-        // AppCubit cubit = AppCubit.get(context);
+        AppCubit cubit = AppCubit.get(context);
         return Scaffold(
           appBar: appBar('الحالة العقلية'),
           body: Padding(
@@ -46,7 +46,7 @@ class _SlumsTestScreen3State extends State<SlumsTestScreen3> {
                           setState(() {
                             selectedChoiceIndex = value!;
                             // print(value);
-                            questions3[0].answer =
+                            cubit.questions3[0].answer =
                                 selectedChoiceIndex.toString();
                           });
                         },
@@ -59,7 +59,7 @@ class _SlumsTestScreen3State extends State<SlumsTestScreen3> {
                   TextField(
                     onChanged: (newValue) {
                       setState(() {
-                        questions3[1].answer = newValue;
+                        cubit.questions3[1].answer = newValue;
                       });
                     },
                   ),
